@@ -1,11 +1,55 @@
 {
   "version": 3,
   "targets": {
-    "net10.0-windows7.0": {}
+    "net10.0-windows7.0": {
+      "WindowsInput/6.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/WindowsInput.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/WindowsInput.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ],
+        "contentFiles": {
+          "contentFiles/any/net6.0-windows7.0/.nuget/mouse-keyboard-hook-logo.png": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WindowsInput/6.4.1": {
+      "sha512": "wfg9uu5xDvBcaNqvR1ZTFQqBf4bKzkxdd5WviTZPy4cAywEzLzofuYswZB3nGIEnnlwGLBGSgrNOEZH/w8JI9w==",
+      "type": "package",
+      "path": "windowsinput/6.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "content/.nuget/mouse-keyboard-hook-logo.png",
+        "contentFiles/any/net461/.nuget/mouse-keyboard-hook-logo.png",
+        "contentFiles/any/net6.0-windows7.0/.nuget/mouse-keyboard-hook-logo.png",
+        "contentFiles/any/netcoreapp3.1/.nuget/mouse-keyboard-hook-logo.png",
+        "lib/net461/WindowsInput.dll",
+        "lib/net6.0-windows7.0/WindowsInput.dll",
+        "lib/netcoreapp3.1/WindowsInput.dll",
+        "mouse-keyboard-hook-logo.png",
+        "windowsinput.6.4.1.nupkg.sha512",
+        "windowsinput.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0-windows7.0": []
+    "net10.0-windows7.0": [
+      "WindowsInput >= 6.4.1"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\yari_\\.nuget\\packages\\": {}
@@ -49,6 +93,12 @@
     "frameworks": {
       "net10.0-windows7.0": {
         "targetAlias": "net10.0-windows",
+        "dependencies": {
+          "WindowsInput": {
+            "target": "Package",
+            "version": "[6.4.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
