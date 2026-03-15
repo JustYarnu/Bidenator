@@ -20,6 +20,12 @@ internal class MouseController
 
     public void ButtonUp(ButtonCode button) 
         => Simulate.Events().Release(button).Invoke();
+    
+    public void ButtonPress(ButtonCode button)
+    {
+        ButtonDown(button);
+        ButtonUp(button);
+    }
 
     public void Scroll(ButtonCode direction, int clicks)
     {
