@@ -1,83 +1,90 @@
-using System.Security.Permissions;
+using System;
+using System.Threading;
 using WindowsInput.Events;
 
 public class InputController
 {
     private MouseController mouse;
     private KeyboardController keyboard;
-
     private Random rnd;
+
     public InputController()
     {
         mouse = new MouseController();
         keyboard = new KeyboardController();
         rnd = new Random();
+    }
+    
+    public void Wait(int delay)
+    {
+        Thread.Sleep(delay);
+    }
 
-        void MouseButtonDown(ButtonCode button)
-        {
-            mouse.ButtonDown(button);
-        }
+    public void RandomWait(int lowerBound, int upperBound)
+    {
+        if (lowerBound > upperBound) (lowerBound, upperBound) = (upperBound, lowerBound);
+        Thread.Sleep(rnd.Next(lowerBound, upperBound + 1));
+    }
 
-        void MouseButtonUp(ButtonCode button)
-        {
-            mouse.ButtonUp(button);
-        }
+    public void MouseMoveTo(int x, int y) => mouse.MoveTo(x, y);
+    public void MouseMoveBy(int x, int y) => mouse.MoveBy(x, y);
+    public void MouseScroll(ButtonCode direction, int clicks) => mouse.Scroll(direction, clicks);
 
-        void MouseButtonPress(ButtonCode button)
-        {
-            mouse.ButtonPress(button);
-        }
+    public void MouseButtonDown(ButtonCode button) => mouse.ButtonDown(button);
+    public void MouseButtonUp(ButtonCode button) => mouse.ButtonUp(button);
+    public void MouseButtonPress(ButtonCode button) => mouse.ButtonPress(button);
+    public void MouseDelayedButtonDown(ButtonCode button, int delay)
+    {
+        Thread.Sleep(delay);
+        MouseButtonDown(button);
+    }
 
-        void KeyboardKeyDown(KeyCode key)
-        {
-            keyboard.KeyDown(key);
-        }
-        
-        void KeyboardKeyUp(KeyCode key)
-        {
-            keyboard.KeyUp(key);
-        }
+    public void RandomDelayedMouseButtonDown(ButtonCode button, int lowerBound, int upperBound)
+    {
+        RandomWait(lowerBound, upperBound);
+        MouseButtonDown(button);
+    }
 
-        void KeyboardKeyPress(KeyCode key)
-        {
-            keyboard.KeyPress(key);
-        }
+    public void MouseDelayedButtonUp(ButtonCode button, int delay)
+    {
+        Thread.Sleep(delay);
+        MouseButtonUp(button);
+    }
 
-        void MouseDelayedButtonDown(ButtonCode button, int delay)
-        {
-            Thread.Sleep(delay);
-            MouseButtonDown(button);
-        }
+    public void RandomDelayedMouseButtonUp(ButtonCode button, int lowerBound, int upperBound)
+    {
+        RandomWait(lowerBound, upperBound);
+        MouseButtonUp(button);
+    }
 
-        void RandomDelayedMouseButtonDown(ButtonCode button, int upperBound, int lowerBound)
-        {
-            Thread.Sleep(rnd.Next(lowerBound, upperBound+1));
-            MouseButtonDown(button);
-        }
+    public void DelayedMouseButtonPress(ButtonCode button, int delay)
+    {
+        Thread.Sleep(delay);
+        MouseButtonPress(button);
+    }
+    
+    public void RandomDelayedMouseButtonPress(ButtonCode button, int lowerBound, int upperBound)
+    {
+        RandomWait(lowerBound, upperBound);
+        MouseButtonPress(button);
+    }
+    public void KeyboardKeyDown(KeyCode key) => keyboard.KeyDown(key);
+    public void KeyboardKeyUp(KeyCode key) => keyboard.KeyUp(key);
+    public void KeyboardKeyPress(KeyCode key) => keyboard.KeyPress(key);
+    
+    public void KeyboardModifiedStroke(KeyCode modifier, KeyCode key) => keyboard.ModifiedStroke(modifier, key);
+    
+    public void KeyboardTypeText(KeyCode[] text) => keyboard.TypeText(text);
 
-        void MouseDelayedButtonUp(ButtonCode button, int delay)
-        {
-            Thread.Sleep(delay);
-            MouseButtonUp(button);
-        }
+    public void KeyboardDelayedKeyPress(KeyCode key, int delay)
+    {
+        Thread.Sleep(delay);
+        KeyboardKeyPress(key);
+    }
 
-        void RandomDelayedMouseButtonUp(ButtonCode button, int upperBound, int lowerBound)
-        {
-            Thread.Sleep(rnd.Next(lowerBound, upperBound+1));
-            MouseButtonUp(button);
-        }
-
-        void DelayedMouseButtonPress(ButtonCode button, int delay)
-        {
-            Thread.Sleep(delay);
-            MouseButtonPress(button);
-        }
-        
-        void RandomDelayedMouseButtonPress(ButtonCode button, int upperBound, int lowerBound)
-        {
-            Thread.Sleep(rnd.Next(lowerBound, upperBound+1));
-        }
-
-        
+    public void RandomDelayedKeyboardKeyPress(KeyCode key, int lowerBound, int upperBound)
+    {
+        RandomWait(lowerBound, upperBound);
+        KeyboardKeyPress(key);
     }
 }
