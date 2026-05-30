@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yari_\\Desktop\\Project\\Bidenator\\app\\WinFormsApp\\WinFormsApp.csproj",
+      "projectUniqueName": "C:\\Users\\yari_\\Desktop\\Project(s)\\Bidenator\\app\\WinFormsApp\\WinFormsApp.csproj",
       "projectName": "WinFormsApp",
-      "projectPath": "C:\\Users\\yari_\\Desktop\\Project\\Bidenator\\app\\WinFormsApp\\WinFormsApp.csproj",
+      "projectPath": "C:\\Users\\yari_\\Desktop\\Project(s)\\Bidenator\\app\\WinFormsApp\\WinFormsApp.csproj",
       "packagesPath": "C:\\Users\\yari_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yari_\\Desktop\\Project\\Bidenator\\app\\WinFormsApp\\obj\\",
+      "outputPath": "C:\\Users\\yari_\\Desktop\\Project(s)\\Bidenator\\app\\WinFormsApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yari_\\AppData\\Roaming\\NuGet\\NuGet.Config"

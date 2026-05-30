@@ -1,3 +1,6 @@
+using WindowsInput;
+using WindowsInput.Events;
+
 public class KeyboardTypeTextCommand : IMacroCommand
 {
     public KeyCode[] TextKeys { get; }
